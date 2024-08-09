@@ -2,8 +2,8 @@
 
 ## Environments
 
-- Preview: https://main--pbakliwal-wknd-05072024-81045--svfranklindemo.hlx.page/
-- Live: https://main--pbakliwal-wknd-05072024-81045--svfranklindemo.hlx.live/
+- Preview: https://main--prudential--preetishb.hlx.page/
+- Live: https://main--prudential--preetishb.hlx.live/
 
 
 ## Pre-requisites
