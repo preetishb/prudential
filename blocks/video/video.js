@@ -70,7 +70,7 @@ function getVideoElement(source, autoplay, background) {
 
   const sourceEl = document.createElement('source');
   sourceEl.setAttribute('src', source);
-  sourceEl.setAttribute('type', `video/${source.split('.').pop()}`);
+  sourceEl.setAttribute('type', `video/mp4`);
   video.append(sourceEl);
 
   return video;
@@ -142,4 +142,8 @@ export default async function decorate(block) {
     });
     observer.observe(block);
   }
+}
+
+export function decorateBlock(block){
+  decorate(block);
 }
