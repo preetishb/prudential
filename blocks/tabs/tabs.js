@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import { toClassName } from '../../scripts/aem.js';
+import { decorateFragment} from '../../blocks/fragment/fragment.js';
 
 export default async function decorate(block) {
   // build tablist
@@ -29,6 +30,11 @@ export default async function decorate(block) {
     button.setAttribute('aria-selected', !i);
     button.setAttribute('role', 'tab');
     button.setAttribute('type', 'button');
+
+    if(block.classList.contains('with-fragment')){
+      decorateFragment(tabpanel.children[1]);
+    }
+
     button.addEventListener('click', () => {
       block.querySelectorAll('[role=tabpanel]').forEach((panel) => {
         panel.setAttribute('aria-hidden', true);
