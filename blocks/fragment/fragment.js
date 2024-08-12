@@ -53,3 +53,7 @@ export default async function decorate(block) {
     }
   }
 }
+
+export function decorateFragment(block){
+  decorate(block);
+}
