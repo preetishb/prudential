@@ -14,7 +14,7 @@
   text-align: left;
   font-size: 30px;
   font-weight: 300;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'PT Serif', sans-serif;
   line-height: normal;
 }
 
@@ -24,7 +24,7 @@
   line-height: 1.5;
   text-align: left;
   margin-bottom: 20px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'PT Serif', sans-serif;
   font-weight: 500;
 }
 
@@ -37,7 +37,7 @@
   letter-spacing: -0.4px;
   text-align: left;
   margin-bottom: 20px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'PT Serif', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -93,7 +93,7 @@
   color: rgba(0, 0, 0, .87);
   font-size: 24px;
   font-weight: 500;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'PT Serif', sans-serif;
   font-style: normal;
   letter-spacing: -.4px;
 }
