@@ -610,6 +610,38 @@ footer {
 .section.investor-section {
     margin-top: 120px;
     background-color: #f5f4f3;
+
+    .default-content-wrapper {
+        h1 {
+            font-family: 'Oxygen', sans-serif;
+            font-size: 5.2rem;
+            line-height: 6.2rem;
+            letter-spacing: .5px;
+            color: #0d131d;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        h2 {
+            font-family: 'Oxygen', sans-serif;
+            font-size: 18px;
+            line-height: 32px;
+            letter-spacing: .5px;
+            color: #0d131d;
+            padding: 0 0 30px;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        h1:after,
+        h2:after {
+            content: none;
+        }
+    }
 }
 
 .section.investor-section>div {
@@ -712,8 +744,61 @@ footer {
 .tabs-panel-5 {
     .fragment {
         display: flex;
+
         .button-container {
             margin-right: 10px;
         }
     }
+}
+
+.embed-wrapper {
+    .snapData {
+        background-color: #4ABDAC;
+        /* Teal background */
+        color: white;
+        font-family: 'Oxygen', sans-serif;
+        /* Assuming Oxygen font usage */
+        padding: 20px;
+    }
+
+    .left {
+        display: inline-block;
+        margin-right: 20px;
+        /* Spacing between columns */
+    }
+
+    .datetime {
+        font-size: 14px;
+        /* Adjust size as needed */
+    }
+
+    .priceval {
+        font-size: 24px;
+        /* Larger text for price value */
+    }
+
+    .currency {
+        font-size: 12px;
+        /* Smaller text for currency code */
+    }
+
+    .line {
+        height: 1px;
+        background-color: white;
+        margin-top: -5px;
+        /* Aligns line with bottom of text */
+        margin-bottom: 10px;
+        /* Spacing below line */
+    }
+
+    .lastLabel {
+        font-weight: bold;
+        /* Bold for last trade label */
+    }
+
+    .font12.OxygenRegular.delay {
+        font-size: 12px;
+        /* Smaller text for delay notification */
+    }
+
 }
