@@ -783,7 +783,7 @@ footer {
 .tabs-panel-5 {
     .fragment {
         display: flex;
-
+        flex-wrap: wrap;
         .button-container {
             margin-right: 10px;
         }

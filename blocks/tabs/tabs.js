@@ -51,4 +51,32 @@ export default async function decorate(block) {
   });
 
   block.prepend(tablist);
+
+  /*code for dropdown*/
+    const tabs2 = document.querySelectorAll('.tabs-tab');
+    const dropdown = document.createElement('select');
+    dropdown.classList.add('dropdown');
+  
+    tabs2.forEach(tab => {
+      const option = document.createElement('option');
+      option.value = tab.id;
+      option.textContent = tab.textContent;
+      dropdown.appendChild(option);
+    });
+  
+    dropdown.addEventListener('change', function() {
+      const selectedTab = document.getElementById(this.value);
+      selectedTab.click();
+
+      // Remove 'selected' class from all options
+    dropdown.querySelectorAll('option').forEach(option => {
+      option.classList.remove('selected');
+    });
+
+    // Add 'selected' class to the selected option
+    dropdown.querySelector(`option[value="${this.value}"]`).classList.add('selected');
+    });
+  
+    document.querySelector('.tabs-list').parentNode.insertBefore(dropdown, document.querySelector('.tabs-list'));
+  
 }
