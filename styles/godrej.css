@@ -606,3 +606,114 @@ footer {
 
     }
 }
+
+.section.investor-section {
+    margin-top: 120px;
+    background-color: #f5f4f3;
+}
+
+.section.investor-section>div {
+    padding-right: 10%;
+    padding-left: 10%;
+    margin: 0 auto;
+}
+
+.columns.breadcrumb {
+    gap: 5px;
+    display: inline-flex;
+}
+
+.tabs.with-fragment {
+    padding-top: 50px;
+
+    .tabs-list {
+        display: block;
+    }
+
+    .tabs-tab {
+        font-family: 'PT Serif', serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        color: #0d131d;
+        padding: 25px 0 26px;
+        border-bottom: 1px solid transparent;
+        transition: all 1s ease;
+        text-decoration: none;
+        padding: 20px;
+        border: none;
+    }
+
+    .tabs-tab[aria-selected='true'] {
+        color: #d52b1e;
+        border-bottom: 1px solid #d52b1e;
+        transition: all 1s ease;
+        background-color: transparent;
+    }
+
+    .tabs-panel {
+        border: none;
+        padding: 0;
+    }
+
+    .table {
+        margin-top: 65px;
+        font-family: 'Oxygen', sans-serif;
+
+        table {
+            thead {
+                tr {
+                    border: none;
+
+                    th {
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        line-height: normal;
+                        letter-spacing: 1px;
+                        border: 0 none;
+                        text-transform: uppercase;
+                        color: rgba(13, 19, 29, 0.4);
+                        padding: 20px 2px;
+                    }
+                }
+            }
+
+            tbody {
+                td {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    line-height: normal;
+                    letter-spacing: 1px;
+                    color: #0d131d;
+                    padding: 20px 2px;
+                }
+            }
+        }
+    }
+
+    a.button {
+        color: #0d131d;
+        border: solid 1px #0d131d;
+        padding: 10px 15px 11px 16px;
+        text-transform: uppercase;
+        font-family: 'Oxygen', sans-serif;
+        text-decoration: none;
+        font-size: 10px;
+    }
+
+    a.button:hover {
+        color: #fff;
+        background: #de221c;
+        border-color: #de221c;
+        transition: all .5s ease;
+    }
+}
+
+.tabs-panel-5 {
+    .fragment {
+        display: flex;
+        .button-container {
+            margin-right: 10px;
+        }
+    }
+}

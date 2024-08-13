@@ -15,7 +15,7 @@ export default async function decorate(block) {
 
     // decorate tabpanel
     const tabpanel = block.children[i];
-    tabpanel.className = 'tabs-panel';
+    tabpanel.className = `tabs-panel tabs-panel-${i}`;
     tabpanel.id = `tabpanel-${id}`;
     tabpanel.setAttribute('aria-hidden', !!i);
     tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
@@ -32,6 +32,7 @@ export default async function decorate(block) {
     button.setAttribute('type', 'button');
 
     if(block.classList.contains('with-fragment')){
+      tabpanel.children[1].classList.add('fragment');
       decorateFragment(tabpanel.children[1]);
     }
 
