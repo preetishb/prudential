@@ -31,4 +31,4 @@ indices:
       title:
         select: head > meta[name="og:title"]
         value: |
-          match(el, 'by (.*)')
+          match(attribute(el, 'content'), '([^,]+)')
