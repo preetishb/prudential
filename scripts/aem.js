@@ -838,6 +838,54 @@ async function waitForLCP(lcpBlocks) {
   });
 }
 
+/**
+ * Handles external links and PDFs to be opened in a new tab/window
+ * @param {Element} main The main element
+ */
+function decorateExternalLinks(element) {
+  element.querySelectorAll('a').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (href) {
+      const extension = href.split('.').pop().trim();
+      if (!href.startsWith('/')
+        && !href.startsWith('#')) {
+        if (!href.includes('xyz.com') || (extension === 'pdf')) {
+          a.setAttribute('target', '_blank');
+        }
+      }
+    }
+  });
+}
+
+/**
+ * Wraps images followed by links within a matching <a> tag.
+ * @param {Element} element The container element
+ */
+function wrapImgsInLinks(element) {
+  const pictures = element.querySelectorAll('picture');
+  pictures.forEach((pic) => {
+    const link = pic.nextElementSibling;
+    if (link && link.tagName === 'A' && link.href) {
+      link.innerHTML = pic.outerHTML;
+      pic.replaceWith(link);
+    }
+  });
+}
+
+/**
+ * add title to images
+ * @param {Element} element The container element
+ */
+function addTitleToImgs(element) {
+  const pictures = element.querySelectorAll('img');
+  pictures.forEach((pic) => {
+    if (pic && pic.alt) {
+      // Set the title attribute to the alt text
+      pic.title = pic.alt;
+    }
+  });
+}
+
 init();
 
 export {
@@ -864,4 +912,7 @@ export {
   toClassName,
   updateSectionsStatus,
   waitForLCP,
+  decorateExternalLinks,
+  wrapImgsInLinks,
+  addTitleToImgs
 };

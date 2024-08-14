@@ -1,4 +1,5 @@
 import { decorateBlock } from '../../blocks/video/video.js';
+import { decorateExternalLinks,wrapImgsInLinks,addTitleToImgs } from '../../scripts/aem.js';
 
 
 export default function decorate(block) {
@@ -36,6 +37,18 @@ export default function decorate(block) {
         }
       });
     });
+  }
+
+  if(block.classList.contains('external-link')){
+    decorateExternalLinks(block);
+  }
+
+  if(block.classList.contains('img-wrapped-link')){
+    wrapImgsInLinks(block);
+  }
+
+  if(block.classList.contains('titled-image')){
+    addTitleToImgs(block);
   }
 
 
