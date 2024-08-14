@@ -21,3 +21,14 @@ indices:
         select: head > meta[name="enrichment-positions"]
         values: |
           match(attribute(el, 'content'), '([^,]+)')
+  mysite:
+    include:
+      - /documents/**
+    exclude:
+      - /documents/snippets/**
+    target: /query-index.json
+    properties:
+      title:
+        select: head > meta[name="og:title"]
+        value: |
+          match(el, 'by (.*)')
