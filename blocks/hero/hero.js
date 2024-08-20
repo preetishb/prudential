@@ -22,4 +22,10 @@ export default async function decorate(block) {
       buttonLink?.classList.add('button-primary');
     }
   });
+
+  const overlayBlock = block.children[1];
+  if(overlayBlock){
+    block.children[0].classList.add('hero-content-block');
+    overlayBlock.classList.add('overlay-block');
+  }
 }

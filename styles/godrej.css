@@ -117,20 +117,39 @@ body {
                 object-fit: cover;
             }
 
-            @media (width<=768px) {
+            @media (width<=1024px) {
                 min-height: unset;
 
                 & img {
                     height: auto;
+                    min-height: 230px;
                 }
 
                 picture {
-                    position: unset;
+                    position: relative;
                 }
             }
 
         }
 
+        .overlay-block {
+            position: relative;
+            top: -330px;
+            text-align: center;
+            color: white;
+            font-size: 28px;
+
+            em{
+                color: #de221c;
+            }
+        }
+
+        @media(width>=1024px) {
+            .overlay-block {
+                top: 130px;
+                font-size: 42px;
+            }
+        }
 
 
         .hero-desc-wrapper {
@@ -643,6 +662,21 @@ footer {
         font-family: 'Oxygen', sans-serif;
         font-weight: 400;
         text-transform: uppercase;
+
+        a {
+            text-decoration: none;
+            margin: 0 0 10px 0;
+            font-size: 2.4rem;
+            line-height: 3.4rem;
+            font-family: 'PT Serif', serif;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: #0d131d;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     }
 
     h3 {
@@ -816,7 +850,7 @@ footer {
                 padding: 20px 2px;
                 font-family: 'Oxygen', sans-serif;
 
-                h3{
+                h3 {
                     font-family: 'PT Serif', serif;
                     color: #0d131d;
                     letter-spacing: .5px;
@@ -827,36 +861,44 @@ footer {
                 }
 
                 @media(width<=768px) {
-                    h1,h2,h3{
+
+                    h1,
+                    h2,
+                    h3 {
                         line-height: 22px;
                     }
                 }
             }
-            
+
         }
     }
 }
 
-.table.table-type-2{
-    table{
+.table.table-type-2 {
+    table {
         margin-bottom: 75px;
-        thead{
+
+        thead {
             th:nth-child(2) {
                 background-color: white;
             }
-            th:not(:first-child){
+
+            th:not(:first-child) {
                 padding-left: 15px;
                 padding-right: 15px;
             }
         }
-        tbody{
+
+        tbody {
             td:nth-child(1) {
                 width: 60%;
             }
+
             td:nth-child(2) {
                 background-color: white;
             }
-            td:not(:first-child){
+
+            td:not(:first-child) {
                 padding-left: 15px;
                 padding-right: 15px;
             }
