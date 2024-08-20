@@ -38,7 +38,7 @@ export default function decorate(block) {
       });
     });
   }
-
+/*
   if(block.classList.contains('external-link')){
     decorateExternalLinks(block);
   }
@@ -51,7 +51,7 @@ export default function decorate(block) {
     addTitleToImgs(block);
   }
 
-
+*/
 }
 
 

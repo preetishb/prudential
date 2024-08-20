@@ -620,7 +620,11 @@ function decorateSections(main) {
       });
       sectionMeta.parentNode.remove();
     }
+    wrapImgsInLinks(section);
+  decorateExternalLinks(section);
+  addTitleToImgs(section);
   });
+  
 }
 
 /**
