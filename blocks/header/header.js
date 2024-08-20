@@ -142,14 +142,26 @@ function setActiveTab() {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // load nav as fragment
-  const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta).pathname : '/nav';
+  const locale = getMetadata('locale');
+  const navPath = locale ? `/${locale}/nav` : '/nav';
   const fragment = await loadFragment(navPath);
+  let languages = null;
+
+  try {
+    const response = await fetch('/languages.json');
+    languages = await response.json();
+  } catch (e) {
+    // error handling
+  }
 
   // decorate nav DOM
   const nav = document.createElement('nav');
   nav.id = 'nav';
+
+  if (!fragment) {
+    return;
+  }
+  
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
   const classes = ['brand', 'sections', 'tools'];
@@ -178,54 +190,41 @@ export default async function decorate(block) {
       });
     });
   }
-
   const navTools = nav.querySelector('.nav-tools');
+  if (languages?.data) {
+    // Create the select element
+    const languageSelector = document.createElement('select');
+    languageSelector.id = 'language-selector';
 
-  /** Mini Cart
-  const minicart = document.createRange().createContextualFragment(`
-    <div class="minicart-wrapper">
-      <button type="button" class="button nav-cart-button"></button>
-      <div class="minicart-panel nav-panel"></div>
-    </div>
-  `);
+    languages.data.forEach((language) => {
+      const option = document.createElement('option');
+      option.value = language.url;
+      option.textContent = language.locale;
+      languageSelector.appendChild(option);
+    });
 
-  //navTools.append(minicart);
-
-  const minicartPanel = navTools.querySelector('.minicart-panel');
-
-  const cartButton = navTools.querySelector('.nav-cart-button');
-  cartButton.setAttribute('aria-label', 'Cart');
-
-  async function toggleMiniCart(state) {
-    const show = state ?? !minicartPanel.classList.contains('nav-panel--show');
-
-    if (show) {
-      await cartProvider.render(MiniCart, {
-        routeEmptyCartCTA: () => '/',
-        routeProduct: (product) => `/products/${product.url.urlKey}/${product.sku}`,
-        routeCart: () => '/cart',
-        routeCheckout: () => '/checkout',
-      })(minicartPanel);
-    } else {
-      minicartPanel.innerHTML = '';
+    // Set the default value based on the locale meta tag
+    // eslint-disable-next-line max-len
+    const defaultLanguage = languages.data.find((lang) => lang.locale.toLowerCase() === locale.toLowerCase());
+    if (defaultLanguage) {
+      languageSelector.value = defaultLanguage.url;
     }
 
-    minicartPanel.classList.toggle('nav-panel--show', show);
+    // Add event listener to handle change event
+    languageSelector.addEventListener('change', () => {
+      window.location.href = languageSelector.value;
+    });
+
+//    const navTools = nav.querySelector('.nav-tools');
+    const liElem = document.createElement('div');
+    liElem.append(languageSelector);
+    liElem.classList.add('lang-nav-selector');
+    navTools.append(liElem);
   }
 
-  cartButton.addEventListener('click', () => toggleMiniCart());
 
-  // Cart Item Counter
-  events.on('cart/data', (data) => {
-    if (data?.totalQuantity) {
-      cartButton.setAttribute('data-count', data.totalQuantity);
-    } else {
-      cartButton.removeAttribute('data-count');
-    }
-  }, { eager: true });
 
-  */
-  /** Search */
+    /** Search */
   const search = document.createRange().createContextualFragment(`
   <div class="search-wrapper">
     <button type="button" class="button nav-search-button">Search</button>
@@ -257,10 +256,6 @@ export default async function decorate(block) {
 
   // Close panels when clicking outside
   document.addEventListener('click', (e) => {
-    if (!minicartPanel.contains(e.target) && !cartButton.contains(e.target)) {
-      toggleMiniCart(false);
-    }
-
     if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
       toggleSearch(false);
     }
