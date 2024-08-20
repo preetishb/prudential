@@ -1,13 +1,13 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
 // Drop-in Providers
-import { render as cartProvider } from '@dropins/storefront-cart/render.js';
+//import { render as cartProvider } from '@dropins/storefront-cart/render.js';
 
 // Drop-in Containers
-import MiniCart from '@dropins/storefront-cart/containers/MiniCart.js';
+//import MiniCart from '@dropins/storefront-cart/containers/MiniCart.js';
 
 // Drop-in Tools
-import { events } from '@dropins/tools/event-bus.js';
+//import { events } from '@dropins/tools/event-bus.js';
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
@@ -131,10 +131,10 @@ function setActiveTab() {
 
   /* temp - only for the demo since the adventures landing page is the "home page"
   */
-  if (!path) {
+  /*if (!path) {
     const adventureTab = navTabLinks.querySelector('a[title="Adventures"],a[title="adventures"]');
     adventureTab.classList.add('active');
-  }
+  }*/
 }
 
 /**
@@ -181,7 +181,7 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
 
-  /** Mini Cart */
+  /** Mini Cart
   const minicart = document.createRange().createContextualFragment(`
     <div class="minicart-wrapper">
       <button type="button" class="button nav-cart-button"></button>
@@ -189,7 +189,7 @@ export default async function decorate(block) {
     </div>
   `);
 
-  navTools.append(minicart);
+  //navTools.append(minicart);
 
   const minicartPanel = navTools.querySelector('.minicart-panel');
 
@@ -224,6 +224,7 @@ export default async function decorate(block) {
     }
   }, { eager: true });
 
+  */
   /** Search */
   const search = document.createRange().createContextualFragment(`
   <div class="search-wrapper">
@@ -231,7 +232,6 @@ export default async function decorate(block) {
     <div class="nav-search-input nav-search-panel nav-panel hidden">
       <form id="search_mini_form" action="/search" method="GET">
         <input id="search" type="search" name="q" placeholder="Search" />
-        <div id="search_autocomplete" class="search-autocomplete"></div>
       </form>
     </div>
   </div>
