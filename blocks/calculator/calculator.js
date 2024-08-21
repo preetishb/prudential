@@ -1,5 +1,23 @@
 export default async function decorate(block) {
-    const calcHTML = '<div class="calculator-content"><h2>Calculate the value of holding</h2><div class="calc-elem"><p>The current share price is</p> <span type="number" id="sharePrice" data-shareval="635.40" class="bold-span">635.40GBP</span></div><div class="calc-elem"><p>Enter the number of shares that you own</p> <input type="number" id="sharesOwned" placeholder=""></div><div class="calc-elem btn-wrapper"><button class="calculateHolding">CALCULATE</button></div><div class="calc-elem"><p>The value of your holding currently stands at</p> <span id="holdingValue" class="bold-span">0GBP</span></div></div>';
+
+    let res = null;
+    try {
+        const response = await fetch('/calculator.json');
+        res = await response.json();
+      } catch (e) {
+        // error handling
+        console.log("error")
+      }
+
+      
+    let calcHTML = '<div class="calculator-content"><h2>Calculate the value of holding</h2><div class="calc-elem"><p>[rateLbl]</p> <span type="number" id="sharePrice" data-shareval="[rate]" class="bold-span">[rateFieldLbl]</span></div><div class="calc-elem"><p>[inputLbl]</p> <input type="number" id="sharesOwned" placeholder=""></div><div class="calc-elem btn-wrapper"><button class="calculateHolding">[btnLbl]</button></div><div class="calc-elem"><p>[resultLbl]</p> <span id="holdingValue" class="bold-span">0GBP</span></div></div>';
+
+    if (res?.data) {
+        res.data.forEach(item => {
+            calcHTML = calcHTML.replace('['+item.property+']', item.value);
+          });
+    }
+
     block.innerHTML = calcHTML;
 
     const calc = block.querySelector('.calculateHolding');
