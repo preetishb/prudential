@@ -34,6 +34,7 @@
   border-radius: 10px;
   cursor: pointer;
   flex: 1 0 0;
+
 }
 
 @media (width >=900px) {
@@ -41,6 +42,7 @@
     align-items: center;
     flex-direction: unset;
     gap: 32px;
+    
   }
 
   .columns>div>div {
@@ -182,4 +184,10 @@
 
 .blog .columns-wrapper {
   margin-top: 20px;
+}
+
+.columns.embed-block{
+  table{
+    display: none;
+  }
 }

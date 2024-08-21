@@ -1,5 +1,4 @@
 import { decorateBlock } from '../../blocks/video/video.js';
-import { decorateExternalLinks,wrapImgsInLinks,addTitleToImgs } from '../../scripts/aem.js';
 
 
 export default function decorate(block) {
@@ -9,18 +8,18 @@ export default function decorate(block) {
 
   if (block.classList.contains('video-column')) {
     // setup image columns
-  [...block.children].forEach((row) => {
-    row.classList.add("card-block");
-    [...row.children].forEach((col) => {
-      const pic = col.querySelector('picture');
-      if (pic) {
-        const picWrapper = pic.closest('div');
-        picWrapper.classList.add('video');
-        decorateBlock(picWrapper)
-        
-      }
+    [...block.children].forEach((row) => {
+      row.classList.add("card-block");
+      [...row.children].forEach((col) => {
+        const pic = col.querySelector('picture');
+        if (pic) {
+          const picWrapper = pic.closest('div');
+          picWrapper.classList.add('video');
+          decorateBlock(picWrapper)
+
+        }
+      });
     });
-  });
   } else {
     // setup image columns
     [...block.children].forEach((row) => {
@@ -36,22 +35,23 @@ export default function decorate(block) {
 
         }
       });
+
+      if (block.classList.contains('embed-block')) {
+        const table = row.querySelector('table');
+        table.classList.add('embed-table')
+        if (table) {
+          const anchor = table.querySelector('a');
+          table.insertAdjacentHTML('afterend', getDefaultEmbed(anchor));
+        }
+      }
     });
   }
-/*
-  if(block.classList.contains('external-link')){
-    decorateExternalLinks(block);
-  }
 
-  if(block.classList.contains('img-wrapped-link')){
-    wrapImgsInLinks(block);
-  }
-
-  if(block.classList.contains('titled-image')){
-    addTitleToImgs(block);
-  }
-
-*/
 }
 
+const getDefaultEmbed = (url) => `<div class="default-embed" style="left: 0; width: 100%; height: 600px; position: relative;">
+    <iframe src="${url.href}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen=""
+      scrolling="no" allow="encrypted-media" title="Content from ${url.hostname}" loading="lazy">
+    </iframe>
+  </div>`;
 
