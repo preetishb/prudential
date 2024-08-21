@@ -122,7 +122,8 @@ body {
 
                 & img {
                     height: auto;
-                    min-height: 230px;
+                    min-height: 300px;
+                    height: 300px;
                 }
 
                 picture {
@@ -134,12 +135,12 @@ body {
 
         .overlay-block {
             position: relative;
-            top: -330px;
+            top: -380px;
             text-align: center;
             color: white;
             font-size: 28px;
 
-            em{
+            em {
                 color: #de221c;
             }
         }
@@ -226,10 +227,15 @@ body {
         background: rgba(163, 162, 163, .11)
     }
 
-    padding: 80px 0;
+    padding: 80px 0px;
 
-    @media(width<=768px) {
-        padding: 80px 10px;
+    @media(width<=1024px) {
+        padding: 80px 20px;
+
+        p{
+            font-size: 16px;
+            line-height: 28px;
+        }
     }
 
     h1,
@@ -280,6 +286,18 @@ body {
         padding: 0 0 30px;
         text-align: justify;
         margin: 0;
+    }
+
+    
+    @media(width<=1024px) {
+        p{
+            font-size: 16px;
+            line-height: 28px;
+        }
+        h2{
+            font-size: 32px;
+            line-height: 42px;
+        }
     }
 
     a {
@@ -513,6 +531,11 @@ footer {
 .section.godrej-single-block.link-block {
     padding: 2rem 10%;
 
+    img {
+        height: 350px;
+        object-fit: contain;
+    }
+
     h2 {
         font-size: 1.2rem;
         line-height: 1.5rem;
@@ -609,8 +632,17 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
     inset: 0;
+}
+
+.video .video-placeholder {
+    picture {
+        position: relative;
+    }
+
+    .video-placeholder-play {
+        position: absolute;
+    }
 }
 
 .video[data-embed-loaded='true'] .video-placeholder,
@@ -755,9 +787,17 @@ footer {
 }
 
 .section.investor-section>div {
-    padding-right: 10%;
-    padding-left: 10%;
+    padding-right: 0%;
+    padding-left: 0%;
     margin: 0 auto;
+}
+
+@media(width>768px) {
+    .section.investor-section>div {
+        padding-right: 5%;
+        padding-left: 5%;
+        margin: 0 auto;
+    }
 }
 
 .columns.breadcrumb {
@@ -796,6 +836,15 @@ footer {
     .tabs-panel {
         border: none;
         padding: 0;
+
+        h2 {
+            font-size: 3.2rem;
+            line-height: 4.2rem;
+            letter-spacing: 0;
+            color: #0d131d;
+            font-family: 'PT Serif', serif;
+            font-weight: bold;
+        }
     }
 
 
@@ -1087,5 +1136,83 @@ footer {
             font-family: 'Oxygen', sans-serif;
             font-weight: 400;
         }
+    }
+}
+
+.calculator-content {
+
+    h2{
+        margin-bottom: 20px;
+    }
+    @media(width<=768px) {
+        .calc-elem {
+        margin-bottom: 20px;
+    }
+    }
+    @media(width>=768px) {
+        padding-left: 5%;
+        padding-right: 10%;
+    }
+
+    font-family: Oxygen,
+    sans-serif;
+
+    .calc-elem {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .calc-elem.btn-wrapper {
+        justify-content: flex-end !important;
+    }
+
+    p {
+        margin: 0;
+        padding: 0 5px 0 0;
+        vertical-align: middle;
+        font-size: 18px;
+        line-height: 32px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        background: inherit;
+        font: 400 12px "Oxygen", sans-serif;
+        color: rgba(13, 19, 29, 0.6);
+        padding: 9px 0px;
+        margin: 0;
+        border-bottom: 1px solid #0d131d;
+        border-radius: 0px;
+        width: 220px;
+        outline: none;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        text-transform: uppercase;
+        letter-spacing: 1.7px;
+        line-height: 20px;
+        white-space: nowrap;
+        clear: both;
+        height: 32px;
+        text-align: right;
+    }
+
+
+    .calculateHolding {
+        font: 400 14px "Oxygen", sans-serif;
+        color: #0d131d;
+        border: 1px solid #0d131d;
+        border-radius: 0px;
+        padding: 15px 25px 14px 25px;
+        width: auto;
+        height: 47px;
+        text-transform: uppercase;
+        cursor: pointer;
+        -webkit-appearance: none;
+        outline: none;
+        letter-spacing: 1.5px;
+        vertical-align: middle;
+        margin: 20px 0;
     }
 }
