@@ -55,5 +55,10 @@ export default async function decorate(block) {
 }
 
 export function decorateFragment(block){
-  decorate(block);
+  const link = block.querySelector('a');
+  const path = link ? link.getAttribute('href') : block.textContent.trim();
+  
+  if(path.includes('/fragments/')){
+    decorate(block);
+  }
 }
