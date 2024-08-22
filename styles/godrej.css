@@ -21,7 +21,9 @@ body {
         }
     }
 }
-
+* {
+    box-sizing: border-box;
+  }
 
 .header {
     .header-nav-wrapper {
@@ -325,6 +327,8 @@ body {
     a {
         color: #d52b1e;
         text-decoration: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
     }
 
     a:hover {
